@@ -1,0 +1,184 @@
+:root {
+  /* font family */
+  --poppins: "Poppins", sans-serif;
+  --unbounded: "Unbounded", cursive;
+
+  /* color */
+  --dark: #1e1e1e;
+  --basic: #ffffff;
+  --primary: #1a120b;
+  --secondary: #3c2a21;
+  --light: #d5cea3;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  outline: none;
+}
+
+body {
+  font-family: var(--poppins);
+  background-color: var(--dark);
+  color: var(--basic);
+}
+
+.container {
+  width: 90%;
+  height: 100%;
+  margin: auto;
+}
+
+.row {
+  width: 100%;
+  height: 100%;
+}
+
+.d-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.d-grid {
+  display: grid;
+}
+
+.link-dark a {
+  /* ketika bg gelap */
+  color: var(--basic);
+}
+
+.link-light a {
+  /* ketika bg terang */
+  color: var(--dark);
+}
+
+.mark {
+  font-weight: 200;
+  color: var(--light);
+  font-style: italic;
+}
+
+/* nav */
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background-color: rgba(26, 18, 11, 0.08);
+  border-bottom: 1px solid rgba(60, 42, 33, 0.5);
+}
+
+nav .logo {
+  font-family: var(--unbounded);
+  font-size: 1.2rem;
+}
+
+.navbar a {
+  display: inline-block;
+  margin: 0 1.3em;
+  padding: 1.5em 1em;
+  position: relative;
+}
+
+.navbar a::after {
+  content: "";
+  width: 100%;
+  height: 3px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-bottom: 1px solid var(--light);
+  transform: scaleX(0);
+  transition: 0.3s linear;
+}
+
+.navbar a:hover {
+  color: var(--light);
+}
+
+.navbar a:hover::after {
+  transform: scaleX(1);
+}
+
+.navbar-extra {
+  gap: 1em;
+}
+
+.navbar-extra a:hover {
+  color: var(--light);
+}
+
+#hamMenu {
+  display: none;
+}
+
+/* media query */
+/* laptop view */
+@media screen and (max-width: 1024px) {
+  html {
+    font-size: 75%;
+  }
+}
+
+/* tablet view */
+@media screen and (max-width: 700px) {
+  html {
+    font-size: small;
+  }
+
+  /* nav */
+
+  nav {
+    padding: 1.5em 0;
+  }
+
+  /* end nav */
+}
+
+/* smartphone view */
+@media screen and (max-width: 600px) {
+  html {
+    font-size: smaller;
+  }
+
+  /* nav */
+
+  .navbar {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: -1;
+    background-color: rgba(26, 18, 11, 1);
+    width: 80%;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .navbar.showup {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  .navbar a {
+    width: 100%;
+    text-align: center;
+  }
+
+  #hamMenu {
+    display: flex;
+  }
+
+  /* end nav */
+}
